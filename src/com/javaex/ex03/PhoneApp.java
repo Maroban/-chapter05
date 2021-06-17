@@ -1,9 +1,12 @@
 package com.javaex.ex03;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,37 +17,38 @@ public class PhoneApp {
 		Reader fr = new FileReader("E:\\javaStudy\\file\\PhoneDB.txt");
 		BufferedReader br = new BufferedReader(fr);
 
+		Writer fw = new FileWriter("E:\\javaStudy\\file\\PhoneDB-1.txt");
+		BufferedWriter bfw = new BufferedWriter(fw);
+
 		List<Person> pList = new ArrayList<Person>();
 
+		String data = "";
+		String[] dArray;
+		String name, hp, company;
+
 		while (true) {
-			String data = br.readLine();
+			data = br.readLine();
 			if (data == null) {
 				break;
 			}
-			String[] dArray = data.split(",");
+			dArray = data.split(",");
 
-			String name = dArray[0];
-			String hp = dArray[1];
-			String company = dArray[2];
+			name = dArray[0];
+			hp = dArray[1];
+			company = dArray[2];
 
 			Person person = new Person(name, hp, company);
 
 			pList.add(person);
 		}
 
-		for (int i = 0; i < pList.size(); i++) {
-			System.out.println("이름: " + pList.get(i).getName());
-			System.out.println("핸드폰: " + pList.get(i).getHp());
-			System.out.println("회사: " + pList.get(i).getCompany());
-			System.out.println();
+		for (Person p01 : pList) {
+			p01.showInfo();
 		}
 
-		System.out.println("---------------------------------------");
-
-		System.out.println(
-				"정우성 정보: " + pList.get(1).getName() + ", " + pList.get(1).getHp() + ", " + pList.get(1).getCompany());
-
+		
 		br.close();
+		bfw.close();
 	}
 
 }

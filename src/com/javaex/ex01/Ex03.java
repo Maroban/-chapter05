@@ -11,10 +11,12 @@ import java.io.OutputStream;
 public class Ex03 {
 
 	public static void main(String[] args) throws IOException {
-
-		InputStream in = new FileInputStream("E:\\javaStudy\\file\\img.jpg");
+		
 		// 주 스트림이랑 보조 스트림이랑 연결하기 위해 보 조스트림 값에 주 스트림을 넣는다.
+		InputStream in = new FileInputStream("E:\\javaStudy\\file\\img.jpg");
 		BufferedInputStream bin = new BufferedInputStream(in);
+		
+		
 
 		OutputStream out = new FileOutputStream("E:\\javaStudy\\file\\buffImg.jpg");
 		BufferedOutputStream bout = new BufferedOutputStream(out);
